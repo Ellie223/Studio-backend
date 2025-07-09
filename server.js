@@ -8,9 +8,9 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const prices = {
-  starter: 'price_0XXXstarter',
-  pro: 'price_0XXXpro',
-  elite: 'price_0XXXelite'
+  starter: 'price_1RinNvQlzqDh0v1jlgxibsuj',
+  pro: 'price_1RinOJQlzqDh0v1jAYZvKfus',
+  elite: 'price_1RinOYQlzqDh0v1jSo45NU00'
 };
 
 app.post('/create-checkout-session', async (req, res) => {
