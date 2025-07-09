@@ -12,7 +12,15 @@ module.exports = async (req, res) => {
     return res.status(405).send('Method Not Allowed');
   }
 
-  const { plan } = req.body;
+  // ✅ Manually parse form-urlencoded body
+  const buffers = [];
+  for await (const chunk of req) {
+    buffers.push(chunk);
+  }
+  const bodyData = Buffer.concat(buffers).toString();
+  const params = new URLSearchParams(bodyData);
+  const plan = params.get("plan");
+
   const priceId = prices[plan];
 
   if (!priceId) return res.status(400).send('Invalid plan selected.');
